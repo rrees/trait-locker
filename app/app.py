@@ -1,5 +1,6 @@
 import os
 import logging
+import sys
 
 import flask
 
@@ -7,6 +8,12 @@ from flask_sslify import SSLify
 
 from . import handlers
 from . import redis_utils
+
+logging.basicConfig(
+    format='%(asctime)s [%(levelname)s] %(name)s: %(message)s',
+    level=logging.DEBUG,
+    stream=sys.stderr,
+)
 
 ENV = os.environ.get("ENV", "PROD")
 
